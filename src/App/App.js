@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { fetchExercises, fetchCategories } from '../apiCalls';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Header from '../Header/Header';
+import Exercise from '../Exercise/Exercise';
 import './App.css';
-
-
 
 class App extends Component {
   constructor() {
@@ -20,13 +21,22 @@ class App extends Component {
       .then(data => this.setState({ categories: data.results }))
   }
 
-
   render() {
     return (
-      <div className="App">
-        <h1>Flex</h1>
-        {this.state.exercises[0] ? this.state.exercises.map(exercise => <p key={exercise.id}>{exercise.name}</p>) : <p>Loading..</p>}
-      </div>
+      <main className="App">
+        <Switch>
+          <Redirect exact from='/' to='/home' />
+          <Route exact path="/home" render={() => {
+            return (
+              <React.Fragment>
+                <Header />
+                <Exercise exercises={this.state.exercises} />
+              </React.Fragment>
+            )
+          }
+          } />
+        </Switch>
+      </main>
     );
   }
 
