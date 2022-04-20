@@ -1,35 +1,48 @@
 import React, { Component } from 'react'
-import ExerciseFrom from '../ExerciseForm/ExerciseFrom'
+import ExerciseForm from '../ExerciseForm/ExerciseForm'
 import Exercise from '../Exercise/Exercise'
 
 class WorkoutForm extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state= {
+        this.state = {
             exercises: []
         }
     }
 
 
-
-    render(){
+    submitNewWorkout = e => {
+        e.preventDefault()
+        const newWorkout = {
+            id: Date.now(),
+            ...this.state
+        }
+        this.props.addWorkout(newWorkout)
+        this.clearInputs()
+    }
+    
+    render() {
 
         //above the workout form will be the exercises added from the exercise form
-        const allExercies = this.state.exercises.map(exercise => {
-            <Exercise img={exercise.image} exercises={this.props.exercises}/>
-        })
+        let allExercises;
+        if (this.state.exercises[0]) {
+            allExercises = this.state.exercises.map(exercise => {
+                <Exercise img={exercise.image} name={exercise.name} />
+            })
+        }
+
         return (
-            <div>
-                <section className='exercises-workoutform'>
-
-                </section>
-            <form className='workout-form'>
+            <section className='workoutform' >
                 <h1>Create a new Workout!</h1>
-                <p>list of workouts added</p>
+                <section className='exercises-workoutform'>
+                    {allExercises}
+                </section>
+                {/* <form className='workout-form'> */}
+                <ExerciseForm exercises={this.props.exercises}/>
 
-                <input type='submin' />
-            </form>
-            </div>
+                <button onClick={() => this.submitNewWorkout()}>Add Workout</button>
+                {/* </form> */}
+            </section >
         )
     }
 }

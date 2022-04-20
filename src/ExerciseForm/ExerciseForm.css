@@ -1,0 +1,11 @@
+.set-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+input {
+    width: 20%;
+}

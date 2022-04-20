@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { fetchExercises, fetchCategories, fetchPictures } from '../apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
-import Exercise from '../Exercise/Exercise';
+import WorkoutForm from '../WorkoutFrom/WorkoutForm';
 import './App.css';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                
+                <WorkoutForm exercises={this.state.exercises} pictures={this.state.pictures} />
               </React.Fragment>
             )
           }
