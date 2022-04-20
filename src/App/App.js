@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       exercises: [],
       categories: [],
-      pictures: []
+      pictures: [],
+      workouts: []
     }
   }
 
@@ -22,9 +23,11 @@ class App extends Component {
       .then(data => this.setState({ categories: data.results }))
     fetchPictures()
       .then(data => this.setState({ pictures: data.results }))
+      
   }
 
   render() {
+    console.log(this.state)
     return (
       <main className="App">
         <Switch>
