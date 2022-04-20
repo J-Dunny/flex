@@ -5,23 +5,30 @@ class ExerciseForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            img: '',
             name: '',
-            set1: '',
-            set2: '',
-            set3: ''
-
+            set1Reps: '',
+            set1Weight: '',
+            set2Reps: '',
+            set2Weight: '',
+            set3Reps: '',
+            set3Weight: ''
         }
-
     }
 
     //for each exercise create an options for the drop down
     // handel change to change inputs of the state to add to form
 
-    submitNewTrick = e => {
+    changeHandler = (e) => {
+        this.setState({ ...this.state, [e.target.name]: e.target.value })
+    }
+
+    submitNewExercise = e => {
         e.preventDefault()
+
+        // const image = this.props.pictures.map(picture => )
         const newExercise = {
             id: Date.now(),
+            img: '',
             ...this.state
         }
         this.props.addExercise(newExercise)
@@ -41,11 +48,8 @@ class ExerciseForm extends Component {
         })
     }
 
-    changeHandler = (e) => {
-        this.setState({ ...this.state, [e.target.name]: e.target.value })
-    }
-
     render() {
+        console.log(this.props.pictures)
         let options;
         if(this.props.exercises[0]){
             options = this.props.exercises.map(exercise => {
@@ -54,8 +58,8 @@ class ExerciseForm extends Component {
         }
         
         return (
-            <form className='exercise-form'>
-                <select name="exersise" value={this.state.name} onChange={e => this.changeHandler(e)}>
+            <form className='exercise-form' onSubmit={this.submitNewExercise}>
+                <select name="name" value={this.state.name} onChange={e => this.changeHandler(e)}>
                 {options}
                 </select>
                 <section className='set-inputs'>

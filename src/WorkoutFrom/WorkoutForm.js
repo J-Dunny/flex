@@ -10,6 +10,9 @@ class WorkoutForm extends Component {
         }
     }
 
+    addExercise = (newExercise) => {
+        this.setState({exercises: [this.state.excercises, newExercise]})
+    }
 
     submitNewWorkout = e => {
         e.preventDefault()
@@ -27,7 +30,7 @@ class WorkoutForm extends Component {
         let allExercises;
         if (this.state.exercises[0]) {
             allExercises = this.state.exercises.map(exercise => {
-                <Exercise img={exercise.image} name={exercise.name} />
+                <Exercise img={exercise.image} name={exercise.name}  />
             })
         }
 
@@ -38,7 +41,7 @@ class WorkoutForm extends Component {
                     {allExercises}
                 </section>
                 {/* <form className='workout-form'> */}
-                <ExerciseForm exercises={this.props.exercises}/>
+                <ExerciseForm exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures}/>
 
                 <button onClick={() => this.submitNewWorkout()}>Add Workout</button>
                 {/* </form> */}
