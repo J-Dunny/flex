@@ -1,25 +1,25 @@
 import React from "react"
 
-const Exercise = (props) => {
-    console.log(props)
-    // if (!props.exercises[0]) {
-    //     return (
-    //         <section className="exercise">
-    //             <p>Loading...</p>
-    //         </section>
-    //     )
-    // } else {
-    if(props.exercises[0]){
-        const exercises = props.exercises.map(workout => {
-            return (
-                <section key={workout.id} className="exercise">
-                    <p>{workout.name}</p>
-                </section>
-            )
-        })
+const Exercise = () => {
 
-        return exercises
-    }
+
+
+    return (
+        <section className="exercise">
+            <p>Img</p>
+            <p>Exercise Name</p>
+            <div>
+                <p>Reps x Weight</p>
+                <p>Reps x Weight</p>
+                <p>Reps x Weight</p>
+            </div>
+
+        </section>
+    )
+
+
+
+
 
 }
 

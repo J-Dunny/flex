@@ -30,7 +30,7 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                <Exercise exercises={this.state.exercises} />
+                
               </React.Fragment>
             )
           }
