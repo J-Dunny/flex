@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchExercises, fetchCategories } from '../apiCalls';
+import { fetchExercises, fetchCategories, fetchPictures } from '../apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Exercise from '../Exercise/Exercise';
@@ -10,7 +10,8 @@ class App extends Component {
     super()
     this.state = {
       exercises: [],
-      categories: []
+      categories: [],
+      pictures: []
     }
   }
 
@@ -19,6 +20,8 @@ class App extends Component {
       .then(data => this.setState({ exercises: data.results }))
     fetchCategories()
       .then(data => this.setState({ categories: data.results }))
+    fetchPictures()
+      .then(data => this.setState({ pictures: data.results }))
   }
 
   render() {
