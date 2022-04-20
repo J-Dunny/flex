@@ -1,3 +1,10 @@
+.exercise-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .set-inputs {
     display: flex;
     flex-direction: column;
@@ -6,6 +13,16 @@
     /* background-color: red; */
 }
 
+.sets {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 input {
-    width: 20%;
+    margin: 0;
+}
+
+.x {
+    margin:3px;
 }
