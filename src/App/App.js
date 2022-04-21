@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchExercises, fetchCategories, fetchPictures } from '../apiCalls';
+import { fetchExercises, fetchCategories, fetchPictures, newExercises } from '../apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import WorkoutForm from '../WorkoutFrom/WorkoutForm';
@@ -12,11 +12,16 @@ class App extends Component {
       exercises: [],
       categories: [],
       pictures: [],
-      workouts: []
+      workouts: [],
+      newExercises: []
     }
   }
 
   componentDidMount() {
+    newExercises()
+      .then(data => this.setState({ newExercises: data}))
+    // .then(data => console.log(data))
+      
     fetchExercises()
       .then(data => this.setState({ exercises: data.results }))
     fetchCategories()
@@ -27,7 +32,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+    
     return (
       <main className="App">
         <Switch>
@@ -36,7 +41,7 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                <WorkoutForm exercises={this.state.exercises} pictures={this.state.pictures} />
+                <WorkoutForm exercises={this.state.exercises} pictures={this.state.pictures} newExercises={this.state.newExercises}/>
               </React.Fragment>
             )
           }

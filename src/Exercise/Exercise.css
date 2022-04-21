@@ -1,0 +1,8 @@
+.exercise-img {
+    width: 10%;
+}
+
+.exercise {
+    display: flex;
+    flex-direction: row;
+}

@@ -11,7 +11,7 @@ class WorkoutForm extends Component {
     }
 
     addExercise = (newExercise) => {
-        this.setState({exercises: [this.state.excercises, newExercise]})
+        this.setState({exercises: [...this.state.exercises, newExercise]})
     }
 
     submitNewWorkout = e => {
@@ -25,12 +25,12 @@ class WorkoutForm extends Component {
     }
     
     render() {
-
+        
         //above the workout form will be the exercises added from the exercise form
         let allExercises;
         if (this.state.exercises[0]) {
             allExercises = this.state.exercises.map(exercise => {
-                <Exercise img={exercise.image} name={exercise.name}  />
+               return <Exercise key={exercise.id} exercise={exercise}  />
             })
         }
 
@@ -41,7 +41,7 @@ class WorkoutForm extends Component {
                     {allExercises}
                 </section>
                 {/* <form className='workout-form'> */}
-                <ExerciseForm exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures}/>
+                <ExerciseForm newExercises={this.props.newExercises} exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures}/>
 
                 <button onClick={() => this.submitNewWorkout()}>Add Workout</button>
                 {/* </form> */}
