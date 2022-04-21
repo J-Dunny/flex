@@ -7,17 +7,8 @@ class ExerciseForm extends Component {
         this.state = {
             category: '',
             name: '',
-            // set1Reps: '',
-            // set1Weight: '',
-            // set2Reps: '',
-            // set2Weight: '',
-            // set3Reps: '',
-            // set3Weight: ''
         }
     }
-
-    //for each exercise create an options for the drop down
-    // handel change to change inputs of the state to add to form
 
     changeHandler = (e) => {
         this.setState({ ...this.state, [e.target.name]: e.target.value })
@@ -25,43 +16,23 @@ class ExerciseForm extends Component {
 
     submitNewExercise = e => {
         e.preventDefault()
-        // const exercise = this.props.exercises.find(exercise => exercise.name === this.state.name)
-
-        // const image = this.props.pictures.find(picture => picture.exercise_base === exercise.exercise_base)
 
         const exercise = this.props.newExercises.find(workout => workout.name === this.state.name)
-        console.log(exercise)
 
-        let newExercise = {
-            id: exercise.id,
-            equipment: exercise.equipment,
-            gifUrl: exercise.gifUrl,
-            target: exercise.target,
-            ...this.state
-        }
-        // if(image){
-        //     newExercise.img = image.image
-        // }
-        console.log(newExercise)
-        this.props.addExercise(newExercise)
+        this.props.addExercise(exercise)
         this.clearInputs()
     }
 
     clearInputs = () => {
         this.setState({
-            img: '',
-            name: '',
-            set1Reps: '',
-            set1Weight: '',
-            set2Reps: '',
-            set2Weight: '',
-            set3Reps: '',
-            set3Weight: ''
+            name:'',
+            category: ''
         })
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
+
         let targets = []
         let categories;
         if (this.props.newExercises[0]) {
@@ -76,44 +47,31 @@ class ExerciseForm extends Component {
             })
         }
 
-        console.log(targets)
-
-        let options;
-        if (this.props.newExercises[0]) {
-            options = this.props.newExercises.map(exercise => {
-                return <option key={exercise.id} value={exercise.name}>{exercise.name}</option>
+        let allOptions;
+        if (this.state.category) {
+           let options = this.props.newExercises.filter(exercise => exercise.target === this.state.category)
+            console.log("cat",this.state.category)
+            console.log("options", options)
+            allOptions = options.map(exercise => {
+                return (
+                    <article className='exercise-card' key={exercise.gifUrl}>
+                        <img className='category-img' src={exercise.gifUrl}/>
+                        <p>{exercise.name}</p>
+                        <button onClick={this.submitNewExercise}>Add Exercise</button>
+                    </article>
+                )
             })
         }
 
         return (
-            <form className='exercise-form' onSubmit={this.submitNewExercise}>
-                <select name="category" value={this.state.category} onChange={e => this.changeHandler(e)}>
+            <form className='exercise-form' >
+                <select placeholder='Choose Category' name="category" value={this.state.category} onChange={e => this.changeHandler(e)}>
+                    <option value='' dsabled selected>Choose Category</option>
                     {categories}
                 </select>
-                <select name="name" value={this.state.name} onChange={e => this.changeHandler(e)}>
-                    {options}
-                </select>
-                {/* <section className='set-inputs'> */}
-                {/* <div className='sets'>
-                        <label>Set 1:</label>
-                        <input name='set1Reps' placeholder='Reps' value={this.state.set1Reps} onChange={(e) => this.changeHandler(e)}></input>
-                        <p className='x'>x</p>
-                        <input name='set1Weight' placeholder='Weight' value={this.state.set1Weight} onChange={(e) => this.changeHandler(e)}></input>
-                    </div>
-                    <div className='sets'>
-                        <label>Set 2:</label>
-                        <input name='set2Reps' placeholder='Reps' value={this.state.set2Reps} onChange={(e) => this.changeHandler(e)}></input>
-                        <p className='x'>x</p>
-                        <input name='set2Weight' placeholder='Weight' value={this.state.set2Weight} onChange={(e) => this.changeHandler(e)}></input>
-                    </div>
-                    <div className='sets'>
-                        <label>Set 3:</label>
-                        <input name='set3Reps' placeholder='Reps' value={this.state.set3Reps} onChange={(e) => this.changeHandler(e)}></input>
-                        <p className='x'>x</p>
-                        <input name='set3Weight' placeholder='Weight' value={this.state.set3Weight} onChange={(e) => this.changeHandler(e)}></input>
-                    </div> */}
-                {/* </section> */}
-                <button>Add Exercise</button>
+                <section className='exercise-cards-section'>
+                    {allOptions}
+                </section>   
             </form>
         )
     }
@@ -121,3 +79,29 @@ class ExerciseForm extends Component {
 }
 
 export default ExerciseForm
+
+
+                // {/* <select name="name" value={this.state.name} onChange={e => this.changeHandler(e)}>
+                //     {options}
+                // </select> */}
+                // {/* <section className='set-inputs'> */}
+                // {/* <div className='sets'>
+                //         <label>Set 1:</label>
+                //         <input name='set1Reps' placeholder='Reps' value={this.state.set1Reps} onChange={(e) => this.changeHandler(e)}></input>
+                //         <p className='x'>x</p>
+                //         <input name='set1Weight' placeholder='Weight' value={this.state.set1Weight} onChange={(e) => this.changeHandler(e)}></input>
+                //     </div>
+                //     <div className='sets'>
+                //         <label>Set 2:</label>
+                //         <input name='set2Reps' placeholder='Reps' value={this.state.set2Reps} onChange={(e) => this.changeHandler(e)}></input>
+                //         <p className='x'>x</p>
+                //         <input name='set2Weight' placeholder='Weight' value={this.state.set2Weight} onChange={(e) => this.changeHandler(e)}></input>
+                //     </div>
+                //     <div className='sets'>
+                //         <label>Set 3:</label>
+                //         <input name='set3Reps' placeholder='Reps' value={this.state.set3Reps} onChange={(e) => this.changeHandler(e)}></input>
+                //         <p className='x'>x</p>
+                //         <input name='set3Weight' placeholder='Weight' value={this.state.set3Weight} onChange={(e) => this.changeHandler(e)}></input>
+                //     </div> */}
+                // {/* </section> */}
+                // {/* <button>Add Exercise</button> */}
