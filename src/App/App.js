@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { fetchExercises, fetchCategories, fetchPictures, newExercises } from '../apiCalls';
+import { newExercises } from '../apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import WorkoutForm from '../WorkoutFrom/WorkoutForm';
+import AllWorkouts from '../AllWorkouts/AllWorkouts';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     newExercises()
-      .then(data => this.setState({ newExercises: data}))   
+      .then(data => this.setState({ newExercises: data }))   
   }
 
   addWorkout = (newWorkout) => {
@@ -30,6 +31,15 @@ class App extends Component {
         <Switch>
           <Redirect exact from='/' to='/home' />
           <Route exact path="/home" render={() => {
+            return (
+              <React.Fragment>
+                <Header />
+                <AllWorkouts workouts={this.state.workouts} />
+              </React.Fragment>
+            )
+          }
+          } />
+          <Route exact path="/addworkout" render={() => {
             return (
               <React.Fragment>
                 <Header />
