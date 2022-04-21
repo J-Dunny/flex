@@ -25,8 +25,7 @@ class WorkoutForm extends Component {
     }
     
     render() {
-        
-        //above the workout form will be the exercises added from the exercise form
+
         let allExercises;
         if (this.state.exercises[0]) {
             allExercises = this.state.exercises.map(exercise => {
@@ -40,7 +39,8 @@ class WorkoutForm extends Component {
                 <section className='exercises-workoutform'>
                     {allExercises}
                 </section>
-                <button onClick={() => this.submitNewWorkout()}>Add Workout</button>
+                {this.state.exercises[0] ? <button onClick={() => this.submitNewWorkout()}>Add Workout</button> : ''}
+                <p>Begin by Adding Exercises below</p>
                 <ExerciseForm newExercises={this.props.newExercises} exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures}/>
 
                 
