@@ -9,27 +9,19 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      exercises: [],
-      categories: [],
-      pictures: [],
-      workouts: [],
-      newExercises: []
+      newExercises: [],
+      workouts: []
     }
   }
 
   componentDidMount() {
     newExercises()
-      .then(data => this.setState({ newExercises: data}))
-    // .then(data => console.log(data))
-      
-    fetchExercises()
-      .then(data => this.setState({ exercises: data.results }))
-    fetchCategories()
-      .then(data => this.setState({ categories: data.results }))
-    fetchPictures()
-      .then(data => this.setState({ pictures: data.results }))
-      
+      .then(data => this.setState({ newExercises: data}))   
   }
+
+  addWorkout = (newWorkout) => {
+    this.setState({ workouts: [...this.state.workouts, newWorkout] })
+}
 
   render() {
     
@@ -41,7 +33,7 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                <WorkoutForm exercises={this.state.exercises} pictures={this.state.pictures} newExercises={this.state.newExercises}/>
+                <WorkoutForm exercises={this.state.exercises} pictures={this.state.pictures} newExercises={this.state.newExercises} addWorkout={this.addWorkout}/>
               </React.Fragment>
             )
           }
