@@ -14,17 +14,18 @@ class ExerciseForm extends Component {
         this.setState({ ...this.state, [e.target.name]: e.target.value })
     }
 
-    submitNewExercise = (exercise) => {
+    submitNewExercise = (e, exercise) => {
+        e.preventDefault()
         this.props.addExercise(exercise)
-        this.clearInputs()
+        // this.clearInputs()
     }
 
-    clearInputs = () => {
-        this.setState({
-            name: '',
-            category: ''
-        })
-    }
+    // clearInputs = () => {
+    //     this.setState({
+    //         name: '',
+    //         category: ''
+    //     })
+    // }
 
     render() {
         let targets = []
@@ -51,7 +52,7 @@ class ExerciseForm extends Component {
                     <article className='exercise-card' key={exercise.gifUrl}>
                         <img className='category-img' src={exercise.gifUrl} />
                         <p>{exercise.name}</p>
-                        <button onClick={() => this.submitNewExercise(exercise)}>Add Exercise</button>
+                        <button onClick={(e) => this.submitNewExercise(e,exercise)}>Add Exercise</button>
                     </article>
                 )
             })
