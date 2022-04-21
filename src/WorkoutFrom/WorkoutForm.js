@@ -40,10 +40,10 @@ class WorkoutForm extends Component {
                 <section className='exercises-workoutform'>
                     {allExercises}
                 </section>
-                
+                <button onClick={() => this.submitNewWorkout()}>Add Workout</button>
                 <ExerciseForm newExercises={this.props.newExercises} exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures}/>
 
-                <button onClick={() => this.submitNewWorkout()}>Add Workout</button>
+                
                 
             </section >
         )

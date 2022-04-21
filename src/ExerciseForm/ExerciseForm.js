@@ -14,11 +14,7 @@ class ExerciseForm extends Component {
         this.setState({ ...this.state, [e.target.name]: e.target.value })
     }
 
-    submitNewExercise = e => {
-        e.preventDefault()
-
-        const exercise = this.props.newExercises.find(workout => workout.name === this.state.name)
-
+    submitNewExercise = (exercise) => {
         this.props.addExercise(exercise)
         this.clearInputs()
     }
@@ -31,8 +27,6 @@ class ExerciseForm extends Component {
     }
 
     render() {
-        // console.log(this.props)
-
         let targets = []
         let categories;
         if (this.props.newExercises[0]) {
@@ -57,7 +51,7 @@ class ExerciseForm extends Component {
                     <article className='exercise-card' key={exercise.gifUrl}>
                         <img className='category-img' src={exercise.gifUrl}/>
                         <p>{exercise.name}</p>
-                        <button onClick={this.submitNewExercise}>Add Exercise</button>
+                        <button onClick={() => this.submitNewExercise(exercise)}>Add Exercise</button>
                     </article>
                 )
             })
@@ -66,7 +60,7 @@ class ExerciseForm extends Component {
         return (
             <form className='exercise-form' >
                 <select placeholder='Choose Category' name="category" value={this.state.category} onChange={e => this.changeHandler(e)}>
-                    <option value='' dsabled selected>Choose Category</option>
+                    <option value='' disabled >Choose Category</option>
                     {categories}
                 </select>
                 <section className='exercise-cards-section'>
