@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import ExerciseForm from '../ExerciseForm/ExerciseForm'
 import Exercise from '../Exercise/Exercise'
 import './WorkoutForm.css'
@@ -48,20 +49,22 @@ class WorkoutForm extends Component {
 
         return (
             <section className='workoutform' >
+                <NavLink to='/home'><button>home</button></NavLink>
                 <h1>Create a new Workout!</h1>
                 <section className='exercises-workout-form'>
                     {allExercises}
                 </section>
-                <form>
+                <form onSubmit={(e) => this.submitNewWorkout(e)}>
                     {this.state.exercises[0] ?
                         <input
                             name="title"
                             value={this.state.title}
                             onChange={e => this.changeHandler(e)}
                             placeholder="Workout Name"
-                        >
-                        </input> : ""}
-                    {this.state.exercises[0] ? <button onClick={(e) => this.submitNewWorkout(e)}>Add Workout</button> : ''}
+                            required
+                        />
+                         : ""}
+                    {this.state.exercises[0] ? <button>Add Workout</button> : ''}
                 </form>
 
                 <p>Begin by Adding Exercises below</p>
