@@ -5,13 +5,14 @@ class ExerciseForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            category: '',
             name: '',
-            set1Reps: '',
-            set1Weight: '',
-            set2Reps: '',
-            set2Weight: '',
-            set3Reps: '',
-            set3Weight: ''
+            // set1Reps: '',
+            // set1Weight: '',
+            // set2Reps: '',
+            // set2Weight: '',
+            // set3Reps: '',
+            // set3Weight: ''
         }
     }
 
@@ -25,7 +26,7 @@ class ExerciseForm extends Component {
     submitNewExercise = e => {
         e.preventDefault()
         // const exercise = this.props.exercises.find(exercise => exercise.name === this.state.name)
-        
+
         // const image = this.props.pictures.find(picture => picture.exercise_base === exercise.exercise_base)
 
         const exercise = this.props.newExercises.find(workout => workout.name === this.state.name)
@@ -61,21 +62,39 @@ class ExerciseForm extends Component {
 
     render() {
         console.log(this.props)
+        let targets = []
+        let categories;
+        if (this.props.newExercises[0]) {
+            this.props.newExercises.forEach(exercise => {
+                if (!targets.includes(exercise.target)) {
+                    targets.push(exercise.target)
+                }
+            })
+
+            categories = targets.map(target => {
+                return <option key={target} value={target}>{target}</option>
+            })
+        }
+
+        console.log(targets)
+
         let options;
-        if(this.props.newExercises[0]){
+        if (this.props.newExercises[0]) {
             options = this.props.newExercises.map(exercise => {
                 return <option key={exercise.id} value={exercise.name}>{exercise.name}</option>
             })
         }
-        
+
         return (
             <form className='exercise-form' onSubmit={this.submitNewExercise}>
-                <select name="name" value={this.state.name} onChange={e => this.changeHandler(e)}>
-                {options}
+                <select name="category" value={this.state.category} onChange={e => this.changeHandler(e)}>
+                    {categories}
                 </select>
-                <section className='set-inputs'>
-                    <div className='sets'>
-                        {/* <img src={this.props.newExercises[100].gifUrl} /> */}
+                <select name="name" value={this.state.name} onChange={e => this.changeHandler(e)}>
+                    {options}
+                </select>
+                {/* <section className='set-inputs'> */}
+                {/* <div className='sets'>
                         <label>Set 1:</label>
                         <input name='set1Reps' placeholder='Reps' value={this.state.set1Reps} onChange={(e) => this.changeHandler(e)}></input>
                         <p className='x'>x</p>
@@ -92,8 +111,8 @@ class ExerciseForm extends Component {
                         <input name='set3Reps' placeholder='Reps' value={this.state.set3Reps} onChange={(e) => this.changeHandler(e)}></input>
                         <p className='x'>x</p>
                         <input name='set3Weight' placeholder='Weight' value={this.state.set3Weight} onChange={(e) => this.changeHandler(e)}></input>
-                    </div>
-                </section>
+                    </div> */}
+                {/* </section> */}
                 <button>Add Exercise</button>
             </form>
         )
