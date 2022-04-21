@@ -21,7 +21,7 @@ class ExerciseForm extends Component {
 
     clearInputs = () => {
         this.setState({
-            name:'',
+            name: '',
             category: ''
         })
     }
@@ -43,13 +43,13 @@ class ExerciseForm extends Component {
 
         let allOptions;
         if (this.state.category) {
-           let options = this.props.newExercises.filter(exercise => exercise.target === this.state.category)
-            console.log("cat",this.state.category)
+            let options = this.props.newExercises.filter(exercise => exercise.target === this.state.category)
+            console.log("cat", this.state.category)
             console.log("options", options)
             allOptions = options.map(exercise => {
                 return (
                     <article className='exercise-card' key={exercise.gifUrl}>
-                        <img className='category-img' src={exercise.gifUrl}/>
+                        <img className='category-img' src={exercise.gifUrl} />
                         <p>{exercise.name}</p>
                         <button onClick={() => this.submitNewExercise(exercise)}>Add Exercise</button>
                     </article>
@@ -59,13 +59,20 @@ class ExerciseForm extends Component {
 
         return (
             <form className='exercise-form' >
-                <select placeholder='Choose Category' name="category" value={this.state.category} onChange={e => this.changeHandler(e)}>
-                    <option value='' disabled >Choose Category</option>
+                <select
+                    placeholder='Choose Category'
+                    name="category"
+                    value={this.state.category}
+                    onChange={e => this.changeHandler(e)}>
+                    <option
+                        value=''
+                        disabled >Choose Category</option>
                     {categories}
                 </select>
-                <section className='exercise-cards-section'>
+                <section
+                    className='exercise-cards-section'>
                     {allOptions}
-                </section>   
+                </section>
             </form>
         )
     }
