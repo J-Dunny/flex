@@ -4,10 +4,11 @@ import './Workout.css'
 
 const Workout = ({workout}) => {
     let exercises;
-    console.log(workout)
-    if(workout[0]){
+    console.log("workout",workout)
+    if(workout){
         exercises = workout.exercises.map(exercise => {
-            return <Exercise key={exercise} exercise={exercise}/>
+            console.log("exercise",exercise)
+            return <Exercise key={exercise.id} exercise={exercise}/>
         })
     }
     
@@ -15,6 +16,7 @@ const Workout = ({workout}) => {
         <section className="workout">
             <h1>{workout.title}</h1>
             {exercises}
+            <button>Do it!</button>
         </section>
     )
 }

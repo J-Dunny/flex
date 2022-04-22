@@ -45,8 +45,7 @@ class ExerciseForm extends Component {
         let allOptions;
         if (this.state.category) {
             let options = this.props.newExercises.filter(exercise => exercise.target === this.state.category)
-            console.log("cat", this.state.category)
-            console.log("options", options)
+            
             allOptions = options.map(exercise => {
                 return (
                     <article className='exercise-card' key={exercise.gifUrl}>

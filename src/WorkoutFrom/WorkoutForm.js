@@ -48,7 +48,7 @@ class WorkoutForm extends Component {
         }
 
         return (
-            <section className='workoutform' >
+            <section className='workout-form' >
                 <NavLink to='/home'><button>home</button></NavLink>
                 <h1>Create a new Workout!</h1>
                 <section className='exercises-workout-form'>
