@@ -21,10 +21,10 @@ class App extends Component {
   }
 
   randomWorkout = () => {
-    let exercise = this.state.newExercises[Math.floor(Math.random() * 1327)]
-    
+    // let exercise = this.state.newExercises[Math.floor(Math.random() * 1327)]
+
     const randomWorkout = {
-      exercises: [exercise],
+      exercises: [this.state.newExercises[Math.floor(Math.random() * 1327)], this.state.newExercises[Math.floor(Math.random() * 1327)], this.state.newExercises[Math.floor(Math.random() * 1327)], this.state.newExercises[Math.floor(Math.random() * 1327)], this.state.newExercises[Math.floor(Math.random() * 1327)]],
       id: Date.now(),
       title: "Random Workout"
 
@@ -43,7 +43,7 @@ class App extends Component {
 
   render() {
     console.log("number", this.state.newExercises[Math.floor(Math.random() * 1327)])
-    console.log("state.workout",this.state.workouts)
+    console.log("state.workout", this.state.workouts)
     return (
       <main className="App">
         <Switch>
