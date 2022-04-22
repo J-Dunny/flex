@@ -20,9 +20,21 @@ class App extends Component {
       .then(data => this.setState({ newExercises: data }))
   }
 
+  randomWorkout = () => {
+    let exercise = this.state.newExercises[Math.floor(Math.random() * 1327)]
+    
+    const randomWorkout = {
+      exercises: [exercise],
+      id: Date.now(),
+      title: "Random Workout"
+
+    }
+    this.setState({ workouts: [...this.state.workouts, randomWorkout] })
+  }
+
   deleteWorkout = (workoutId) => {
     const workouts = this.state.workouts.filter(workout => workout.id != workoutId)
-    this.setState({workouts: workouts})
+    this.setState({ workouts: workouts })
   }
 
   addWorkout = (newWorkout) => {
@@ -30,7 +42,8 @@ class App extends Component {
   }
 
   render() {
-
+    console.log("number", this.state.newExercises[Math.floor(Math.random() * 1327)])
+    console.log("state.workout",this.state.workouts)
     return (
       <main className="App">
         <Switch>
@@ -39,7 +52,7 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                <AllWorkouts workouts={this.state.workouts} deleteWorkout={this.deleteWorkout} />
+                <AllWorkouts randomWorkout={this.randomWorkout} workouts={this.state.workouts} deleteWorkout={this.deleteWorkout} />
               </React.Fragment>
             )
           }
