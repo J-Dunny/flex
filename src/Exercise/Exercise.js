@@ -1,10 +1,11 @@
-import React from "react"
+import React, { Component } from "react"
 import './Exercise.css'
 
-const Exercise = ({ exercise }) => {
+const Exercise = ({ exercise, id }) => {
+    const doWorkoutPage = `http://localhost:3000/doworkout/${id}`
+    // console.log("win",window.location.href)
+    // console.log("do",doWorkoutPage)
 
-
-    
     return (
         <section className="exercise">
             <img className="exercise-img" src={exercise.gifUrl} />
@@ -12,10 +13,10 @@ const Exercise = ({ exercise }) => {
                 <p>{exercise.name}</p>
                 <p>Equipment: {exercise.equipment}</p>
             </div>
-            {/* <div>
+            {window.location.href === doWorkoutPage && <form>
                 <input></input>
                 <input></input>
-            </div> */}
+            </form>}
         </section>
     )
 

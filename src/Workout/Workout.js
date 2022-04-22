@@ -8,7 +8,7 @@ const Workout = ({ workout, deleteWorkout }) => {
 
     if (workout) {
         exercises = workout.exercises.map(exercise => {
-            return <Exercise key={exercise.id} exercise={exercise} />
+            return <Exercise key={exercise.id} id={workout.id} exercise={exercise} />
         })
     }
 
