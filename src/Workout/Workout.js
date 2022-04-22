@@ -1,5 +1,6 @@
 import React from "react"
 import Exercise from "../Exercise/Exercise"
+import { NavLink } from "react-router-dom"
 import './Workout.css'
 
 const Workout = ({ workout, deleteWorkout }) => {
@@ -16,7 +17,7 @@ const Workout = ({ workout, deleteWorkout }) => {
             <button onClick={() => deleteWorkout(workout.id)}>X</button>
             <h1>{workout.title}</h1>
             {exercises}
-            <button>Do it!</button>
+            <NavLink to={`/doworkout/${workout.id}`}><button>Do it!</button></NavLink>
         </section>
     )
 }

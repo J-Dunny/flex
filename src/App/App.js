@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import WorkoutForm from '../WorkoutFrom/WorkoutForm';
 import AllWorkouts from '../AllWorkouts/AllWorkouts';
+import DoWorkout from '../DoWorkout/DoWorkout';
 import './App.css';
 
 class App extends Component {
@@ -22,7 +23,7 @@ class App extends Component {
 
   randomWorkout = () => {
     let exercise = this.state.newExercises
-    
+
     const randomWorkout = {
       exercises: [exercise[Math.floor(Math.random() * 1327)], exercise[Math.floor(Math.random() * 1327)], exercise[Math.floor(Math.random() * 1327)], exercise[Math.floor(Math.random() * 1327)], exercise[Math.floor(Math.random() * 1327)]],
       id: Date.now(),
@@ -39,6 +40,11 @@ class App extends Component {
 
   addWorkout = (newWorkout) => {
     this.setState({ workouts: [...this.state.workouts, newWorkout] })
+  }
+
+  findWorkout(workoutId){
+    const workout = this.state.workouts.find(workout => workout.id === workoutId)
+    return workout
   }
 
   render() {
@@ -61,10 +67,19 @@ class App extends Component {
               <React.Fragment>
                 <Header />
                 <WorkoutForm
-                  exercises={this.state.exercises}
-                  pictures={this.state.pictures}
                   newExercises={this.state.newExercises}
                   addWorkout={this.addWorkout}
+                />
+              </React.Fragment>
+            )
+          }
+          } />
+          <Route exact path="/doworkout/:id" render={({match}) => {
+            return (
+              <React.Fragment>
+                <Header />
+                <DoWorkout oneWorkout={this.findWorkout(parseInt(match.params.id))}
+                  
                 />
               </React.Fragment>
             )
