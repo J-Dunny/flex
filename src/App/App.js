@@ -17,15 +17,20 @@ class App extends Component {
 
   componentDidMount() {
     newExercises()
-      .then(data => this.setState({ newExercises: data }))   
+      .then(data => this.setState({ newExercises: data }))
+  }
+
+  deleteWorkout = (workoutId) => {
+    const workouts = this.state.workouts.filter(workout => workout.id != workoutId)
+    this.setState({workouts: workouts})
   }
 
   addWorkout = (newWorkout) => {
     this.setState({ workouts: [...this.state.workouts, newWorkout] })
-}
+  }
 
   render() {
-    
+
     return (
       <main className="App">
         <Switch>
@@ -34,7 +39,7 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                <AllWorkouts workouts={this.state.workouts} />
+                <AllWorkouts workouts={this.state.workouts} deleteWorkout={this.deleteWorkout} />
               </React.Fragment>
             )
           }
@@ -43,7 +48,12 @@ class App extends Component {
             return (
               <React.Fragment>
                 <Header />
-                <WorkoutForm exercises={this.state.exercises} pictures={this.state.pictures} newExercises={this.state.newExercises} addWorkout={this.addWorkout}/>
+                <WorkoutForm
+                  exercises={this.state.exercises}
+                  pictures={this.state.pictures}
+                  newExercises={this.state.newExercises}
+                  addWorkout={this.addWorkout}
+                />
               </React.Fragment>
             )
           }
