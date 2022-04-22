@@ -1,25 +1,24 @@
 import React from "react"
+import './Exercise.css'
 
-const Exercise = (props) => {
-    console.log(props)
-    // if (!props.exercises[0]) {
-    //     return (
-    //         <section className="exercise">
-    //             <p>Loading...</p>
-    //         </section>
-    //     )
-    // } else {
-    if(props.exercises[0]){
-        const exercises = props.exercises.map(workout => {
-            return (
-                <section key={workout.id} className="exercise">
-                    <p>{workout.name}</p>
-                </section>
-            )
-        })
+const Exercise = ({ exercise }) => {
 
-        return exercises
-    }
+
+    
+    return (
+        <section className="exercise">
+            <img className="exercise-img" src={exercise.gifUrl} />
+            <div>
+                <p>{exercise.name}</p>
+                <p>Equipment: {exercise.equipment}</p>
+            </div>
+            {/* <div>
+                <input></input>
+                <input></input>
+            </div> */}
+        </section>
+    )
+
 
 }
 
