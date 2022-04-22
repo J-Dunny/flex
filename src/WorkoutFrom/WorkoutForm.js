@@ -65,7 +65,7 @@ class WorkoutForm extends Component {
                             required
                         />
                         : ""}
-                    {this.state.title ? <button>Add Workout </button> : ''}
+                    {this.state.title ? <NavLink to="/home"><button>Add Workout </button></NavLink> : ''}
                 </form>
                 <p>Begin by Adding Exercises below</p>
                 <ExerciseForm newExercises={this.props.newExercises} addExercise={this.addExercise} />

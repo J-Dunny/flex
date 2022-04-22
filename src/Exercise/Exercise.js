@@ -12,7 +12,7 @@ class Exercise extends Component {
     }
 
     changeHandler = (e) => {
-        this.setState({...this.state, [e.target.name]: e.target.value})
+        this.setState({ ...this.state, [e.target.name]: e.target.value })
     }
 
     addSet = e => {
@@ -24,7 +24,7 @@ class Exercise extends Component {
         this.setState({
             sets: [...this.state.sets, newSet],
             reps: '',
-            weight: '', 
+            weight: '',
         })
 
 
@@ -35,12 +35,12 @@ class Exercise extends Component {
         // console.log("win",window.location.href)
         // console.log("do",doWorkoutPage)
         let allSets;
-        if(this.state.sets[0]){
+        if (this.state.sets[0]) {
             allSets = this.state.sets.map((set, i) => {
-                return <p key={i}>Set {i+=1}: {set.reps} x {set.weight}</p>
+                return <p key={i}>Set {i += 1}: {set.reps} reps x {set.weight} lbs </p>
             })
         }
-            
+
         return (
             <section className="exercise">
                 <img className="exercise-img" src={this.props.exercise.gifUrl} />
@@ -48,29 +48,29 @@ class Exercise extends Component {
                     <p>{this.props.exercise.name}</p>
                     <p>Equipment: {this.props.exercise.equipment}</p>
                 </div>
-                {window.location.href === doWorkoutPage && 
-                <div>
-                    {allSets}
-                <form onSubmit={(e) => this.addSet(e)}>
-                    <div className="set-form">
-                        <p>Add Set:</p>
-                        <input 
-                        value={this.state.reps}
-                        name="reps" 
-                        placeholder="Repetitions" 
-                        onChange={(e) => this.changeHandler(e)}
-                        >
-                        </input>
-                        <input name="weight" 
-                        value={this.state.weight} 
-                        placeholder="Weight" 
-                        onChange={(e) => this.changeHandler(e)} >
+                {window.location.href === doWorkoutPage &&
+                    <div>
+                        {allSets}
+                        <form onSubmit={(e) => this.addSet(e)}>
+                            <div className="set-form">
+                                <p>Add Set:</p>
+                                <input
+                                    value={this.state.reps}
+                                    name="reps"
+                                    placeholder="Repetitions"
+                                    onChange={(e) => this.changeHandler(e)}
+                                >
+                                </input>
+                                <input name="weight"
+                                    value={this.state.weight}
+                                    placeholder="Weight"
+                                    onChange={(e) => this.changeHandler(e)} >
 
-                        </input>
-                        <button>+</button>
-                    </div>   
-                </form>
-                </div>
+                                </input>
+                                <button>+</button>
+                            </div>
+                        </form>
+                    </div>
                 }
             </section>
         )
