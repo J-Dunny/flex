@@ -1,20 +1,27 @@
 import React from "react"
 import Workout from "../Workout/Workout"
+import { NavLink } from "react-router-dom"
+import './AllWorkouts.css'
 
-const AllWorkouts = ({workouts}) => {
+const AllWorkouts = ({ workouts }) => {
     let workoutCards;
-    console.log(workouts)
-    if(workouts[0]){
+    console.log("workouts", workouts)
+    if (workouts[0]) {
         workoutCards = workouts.map(workout => {
-            return <Workout workout={workout} />
+            return <Workout key={workout} workout={workout} />
         })
     }
-    
+
     return (
-        <section className="all-workouts">
-            <h1>All your workouts</h1>
-            {workoutCards}
-        </section>
+        <div>
+            <NavLink to="/addworkout"><button>Create Workout</button></NavLink>
+            <h2>All your workouts</h2>
+
+            <section className="all-workouts">
+
+                {workoutCards}
+            </section>
+        </div>
     )
 }
 
