@@ -4,10 +4,10 @@ import './Workout.css'
 
 const Workout = ({workout}) => {
     let exercises;
-    console.log("workout",workout)
+    
     if(workout){
         exercises = workout.exercises.map(exercise => {
-            console.log("exercise",exercise)
+            
             return <Exercise key={exercise.id} exercise={exercise}/>
         })
     }

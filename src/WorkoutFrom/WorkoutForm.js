@@ -66,12 +66,8 @@ class WorkoutForm extends Component {
                          : ""}
                     {this.state.exercises[0] ? <button>Add Workout</button> : ''}
                 </form>
-
                 <p>Begin by Adding Exercises below</p>
-                <ExerciseForm newExercises={this.props.newExercises} exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures} />
-
-
-
+                <ExerciseForm newExercises={this.props.newExercises}  addExercise={this.addExercise} />
             </section >
         )
     }
