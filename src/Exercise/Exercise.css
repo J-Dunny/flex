@@ -13,3 +13,9 @@
     margin: 5px;
     background-color: white;
 }
+
+.set-form {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
