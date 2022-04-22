@@ -8,7 +8,7 @@ const AllWorkouts = ({ workouts, deleteWorkout, randomWorkout }) => {
 
     if (workouts[0]) {
         workoutCards = workouts.map(workout => {
-            return <Workout key={workout} workout={workout} deleteWorkout={deleteWorkout} />
+            return <Workout key={workout.id} workout={workout} deleteWorkout={deleteWorkout} />
         })
     }
     
@@ -16,8 +16,8 @@ const AllWorkouts = ({ workouts, deleteWorkout, randomWorkout }) => {
     
     return (
         <div>
-            <NavLink to="/addworkout"><button>Create Workout</button></NavLink>
-            <button onClick={() => randomWorkout()}>Random Workout</button>
+            <NavLink to="/addworkout"><button>Create A Workout</button></NavLink>
+            <button onClick={() => randomWorkout()}>Generate Random Workout</button>
             {workouts[0] ? <h2>All your workouts</h2> : <h2>You haven't created any workouts yet. Click Create Workout to begin!</h2>}
             <section className="all-workouts">
                 {workoutCards}
