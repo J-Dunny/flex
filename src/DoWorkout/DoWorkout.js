@@ -13,7 +13,7 @@ class DoWorkout extends Component {
 
     
 render(){
-
+    console.log(this.props)
     let exercises = this.props.oneWorkout.exercises.map(exercise => {
         return (
             <Exercise key={exercise.id} exercise={exercise} id={this.props.oneWorkout.id} />
