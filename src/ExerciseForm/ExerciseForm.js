@@ -37,13 +37,13 @@ class ExerciseForm extends Component {
         let allOptions;
         if (this.state.category) {
             let options = this.props.newExercises.filter(exercise => exercise.target === this.state.category)
-            
+
             allOptions = options.map(exercise => {
                 return (
                     <article className='exercise-card' key={exercise.gifUrl}>
                         <img className='category-img' src={exercise.gifUrl} />
                         <p>{exercise.name}</p>
-                        <button onClick={(e) => this.submitNewExercise(e,exercise)}>Add Exercise</button>
+                        <button onClick={(e) => this.submitNewExercise(e, exercise)}>Add Exercise</button>
                     </article>
                 )
             })
