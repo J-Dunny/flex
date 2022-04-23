@@ -1,0 +1,6 @@
+.do-workout-exercises {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
