@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import ExerciseForm from '../ExerciseForm/ExerciseForm'
 import Exercise from '../Exercise/Exercise'
 import './WorkoutForm.css'
+import { Redirect } from 'react-router-dom'
 
 class WorkoutForm extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class WorkoutForm extends Component {
 
     clearInputs = () => {
         this.setState({
-            title:'',
+            title: '',
             exercises: []
         })
     }
@@ -49,7 +50,7 @@ class WorkoutForm extends Component {
 
         return (
             <section className='workout-form' >
-                <NavLink to='/home'><button>home</button></NavLink>
+                <NavLink to='/home'><button>View Your Workouts</button></NavLink>
                 <h1>Create a new Workout!</h1>
                 <section className='exercises-workout-form'>
                     {allExercises}
@@ -63,15 +64,11 @@ class WorkoutForm extends Component {
                             placeholder="Workout Name"
                             required
                         />
-                         : ""}
-                    {this.state.exercises[0] ? <button>Add Workout</button> : ''}
+                        : ""}
+                    {this.state.title ? <button>Add Workout</button>: ''}
                 </form>
-
                 <p>Begin by Adding Exercises below</p>
-                <ExerciseForm newExercises={this.props.newExercises} exercises={this.props.exercises} addExercise={this.addExercise} pictures={this.props.pictures} />
-
-
-
+                <ExerciseForm addedExercises={this.state.exercises} newExercises={this.props.newExercises} addExercise={this.addExercise} />
             </section >
         )
     }

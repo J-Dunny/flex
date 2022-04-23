@@ -7,9 +7,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid red;
     width: 90%;
     border-radius: 10px;
     margin: 5px;
     background-color: white;
+}
+
+.set-form {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
 }
