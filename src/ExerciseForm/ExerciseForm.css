@@ -12,7 +12,7 @@
 .exercise-cards-section {
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-
+    margin-top: 5px;
 }
 
 .exercise-card {

@@ -19,7 +19,7 @@ const Workout = ({ workout, deleteWorkout }) => {
             </div>
             <h1>{workout.title}</h1>
             {exercises}
-            <NavLink to={`/doworkout/${workout.id}`}><button>Do it!</button></NavLink>
+            <NavLink to={`/doworkout/${workout.id}`}><button>FLEX!</button></NavLink>
         </section>
     )
 }

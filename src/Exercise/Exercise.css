@@ -18,4 +18,21 @@
     display:flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 655px) {
+    .exercise {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .set-form {
+        display: flex;
+        flex-direction: column;
+
+    }
 }

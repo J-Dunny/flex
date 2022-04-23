@@ -22,7 +22,7 @@ render(){
         )
     })
     return (
-        <section className="do-workout-exercises">
+        <section>
             <NavLink to="/home"><button>Home</button></NavLink>
             <h1>{this.props.oneWorkout.title}</h1>
             <section className="do-workout-exercises" >
