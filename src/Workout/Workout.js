@@ -14,7 +14,9 @@ const Workout = ({ workout, deleteWorkout }) => {
 
     return (
         <section className="workout">
-            <button onClick={() => deleteWorkout(workout.id)}>X</button>
+            <div className="button">
+                <button className="delete-button" onClick={() => deleteWorkout(workout.id)}>❌</button>
+            </div>
             <h1>{workout.title}</h1>
             {exercises}
             <NavLink to={`/doworkout/${workout.id}`}><button>Do it!</button></NavLink>
