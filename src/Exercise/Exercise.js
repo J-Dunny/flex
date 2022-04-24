@@ -31,9 +31,9 @@ class Exercise extends Component {
     }
 
     render() {
-        const doWorkoutPage = `https://flex-react-app.herokuapp.com/doworkout/${this.props.id}`
-        // console.log("win",window.location.href)
-        // console.log("do",doWorkoutPage)
+        const doWorkoutPage = `http://localhost:3000/doworkout/${this.props.id}`
+        // `https://flex-react-app.herokuapp.com/doworkout/${this.props.id}`
+        
         let allSets;
         if (this.state.sets[0]) {
             allSets = this.state.sets.map((set, i) => {
