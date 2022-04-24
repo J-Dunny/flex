@@ -21,7 +21,9 @@ class App extends Component {
 
   componentDidMount() {
     newExercises()
-      .then(data => this.setState({ newExercises: data }))
+      .then(data => {
+        console.log(data)
+        this.setState({ newExercises: data })})
       .catch(error => this.setState({
         ...this.state,
         errorMsg: error.message,
@@ -55,6 +57,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     if (this.state.errorMsg) {
       return (
         <Route exact path="*" render={() => {

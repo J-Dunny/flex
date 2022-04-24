@@ -63,7 +63,7 @@ class ExerciseForm extends Component {
                     onChange={e => this.changeHandler(e)}>
                     <option
                         value=''
-                        disabled >Choose Category</option>
+                         >Choose Category</option>
                     {categories}
                 </select>
                 <section
