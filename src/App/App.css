@@ -1,11 +1,28 @@
 .App {
   text-align: center;
   font-family:Georgia, 'Times New Roman', Times, serif;
-  font-size: 110%;
+  /* font-size: 90%; */
+  color:white;
+}
+
+html {
+  background-color: black;
 }
 
 button {
   cursor: pointer;
+  border-radius: 5px;
+  /* padding: 5px; */
+  background-color: #e00e0e;
+  color:white;
 }
 
+input {
+  border-radius: 5px;
+  margin: 2px;
+}
+
+select {
+  border-radius: 5px;
+}
 

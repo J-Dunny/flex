@@ -15,9 +15,20 @@
     margin-top: 5px;
 }
 
+img {
+    border-radius: 5px;
+}
+
 .exercise-card {
-    border: 1px solid red;
+    border: 1px solid #a90b0b;
     border-radius: 10px;
     margin: 2px;
-    padding: 4px;
+    padding: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .exercise-cards-section {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
 }

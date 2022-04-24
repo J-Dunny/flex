@@ -2,5 +2,15 @@ header {
     border: 1px solid black;
     color:white;
     background-color: black;
+    background-image: url("https://beyondtype1.org/wp-content/uploads/2016/08/BT1-T1D-TEEN-FINDS-BENEFITS-IN-WEIGHT-TRAINING-HEADER-2021.jpg");
+    background-size: cover;
 }
+
+.title {
+    font-size: 500%;
+    margin: 1%;
+    color:black;
+    text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;
+}
+
 
