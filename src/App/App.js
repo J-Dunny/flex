@@ -6,6 +6,7 @@ import WorkoutForm from '../WorkoutFrom/WorkoutForm';
 import AllWorkouts from '../AllWorkouts/AllWorkouts';
 import DoWorkout from '../DoWorkout/DoWorkout';
 import './App.css';
+import NoMatch from './NoMatch/NoMatch';
 
 class App extends Component {
   constructor() {
@@ -42,7 +43,7 @@ class App extends Component {
     this.setState({ workouts: [...this.state.workouts, newWorkout] })
   }
 
-  findWorkout(workoutId){
+  findWorkout(workoutId) {
     const workout = this.state.workouts.find(workout => workout.id === workoutId)
     return workout
   }
@@ -74,19 +75,32 @@ class App extends Component {
             )
           }
           } />
-          <Route exact path="/doworkout/:id" render={({match}) => {
+          <Route exact path="/doworkout/:id" render={({ match }) => {
             return (
               <React.Fragment>
                 <Header />
                 <DoWorkout oneWorkout={this.findWorkout(parseInt(match.params.id))}
-                  
+
                 />
               </React.Fragment>
             )
           }
           } />
-        </Switch>
-      </main>
+          <Route  path="*" render={() => {
+            return (
+              <React.Fragment>
+                <Header />
+                <NoMatch />
+              </React.Fragment>
+            )
+          }
+          } />
+           
+
+
+
+      </Switch>
+      </main >
     );
   }
 
