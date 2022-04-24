@@ -7,15 +7,33 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    border: 2px solid #a90b0b;
     width: 90%;
     border-radius: 10px;
     margin: 5px;
     background-color: white;
+    color: black
 }
 
 .set-form {
     display:flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 655px) {
+    .exercise {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .set-form {
+        display: flex;
+        flex-direction: column;
+
+    }
 }
