@@ -59,13 +59,15 @@ class Exercise extends Component {
                                     name="reps"
                                     placeholder="Repetitions"
                                     onChange={(e) => this.changeHandler(e)}
+                                    required
                                 >
                                 </input>
                                 <input name="weight"
                                     value={this.state.weight}
                                     placeholder="Weight"
-                                    onChange={(e) => this.changeHandler(e)} >
-
+                                    onChange={(e) => this.changeHandler(e)}
+                                    required
+                                >
                                 </input>
                                 <button>+</button>
                             </div>
