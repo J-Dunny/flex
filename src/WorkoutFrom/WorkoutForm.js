@@ -43,7 +43,7 @@ class WorkoutForm extends Component {
     }
 
     render() {
-        console.log(this.state.added)
+        
         let allExercises;
         if (this.state.exercises[0]) {
             allExercises = this.state.exercises.map(exercise => {

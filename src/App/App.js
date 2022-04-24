@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import WorkoutForm from '../WorkoutFrom/WorkoutForm';
 import AllWorkouts from '../AllWorkouts/AllWorkouts';
 import DoWorkout from '../DoWorkout/DoWorkout';
+import Error from '../Error/Error';
 import './App.css';
 import NoMatch from './NoMatch/NoMatch';
 
@@ -13,13 +14,18 @@ class App extends Component {
     super()
     this.state = {
       newExercises: [],
-      workouts: []
+      workouts: [],
+      errorMsg: ''
     }
   }
 
   componentDidMount() {
     newExercises()
       .then(data => this.setState({ newExercises: data }))
+      .catch(error => this.setState({
+        ...this.state,
+        errorMsg: error.message,
+      }))
   }
 
   randomWorkout = () => {
@@ -49,6 +55,17 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.errorMsg) {
+      return (
+        <Route exact path="*" render={() => {
+          return (
+            <Error error={this.state.errorMsg} />
+          )
+        }
+        } />
+      )
+    }
+
 
     return (
       <main className="App">
@@ -86,7 +103,7 @@ class App extends Component {
             )
           }
           } />
-          <Route  path="*" render={() => {
+          <Route path="*" render={() => {
             return (
               <React.Fragment>
                 <Header />
@@ -95,11 +112,11 @@ class App extends Component {
             )
           }
           } />
-           
 
 
 
-      </Switch>
+
+        </Switch>
       </main >
     );
   }
