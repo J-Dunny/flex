@@ -10,7 +10,8 @@ class WorkoutForm extends Component {
         super(props)
         this.state = {
             title: '',
-            exercises: []
+            exercises: [],
+            added:""
         }
     }
 
@@ -29,18 +30,20 @@ class WorkoutForm extends Component {
             ...this.state
         }
         this.props.addWorkout(newWorkout)
-        this.clearInputs()
+        this.setState({added:"Your workout was added!!"})
+        setTimeout(() => this.clearInputs(), 3000)
     }
 
     clearInputs = () => {
         this.setState({
             title: '',
-            exercises: []
+            exercises: [],
+            added: ''
         })
     }
 
     render() {
-
+        console.log(this.state.added)
         let allExercises;
         if (this.state.exercises[0]) {
             allExercises = this.state.exercises.map(exercise => {
@@ -51,10 +54,10 @@ class WorkoutForm extends Component {
         return (
             <section className='workout-form' >
                 <NavLink to='/home'><button>View Your Workouts</button></NavLink>
-                <h1>Create a new Workout!</h1>
-                <section className='exercises-workout-form'>
+                {this.state.added ? <h1 className='added'>{this.state.added}</h1> : <h1>Create a new Workout!</h1>}
+                {this.state.added ? "" :<section className='exercises-workout-form'>
                     {allExercises}
-                </section>
+                </section>}
                 <form onSubmit={(e) => this.submitNewWorkout(e)}>
                     {this.state.exercises[0] ?
                         <input
