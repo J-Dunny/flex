@@ -11,9 +11,7 @@ const AllWorkouts = ({ workouts, deleteWorkout, randomWorkout }) => {
             return <Workout key={workout.id} workout={workout} deleteWorkout={deleteWorkout} />
         })
     }
-    
 
-    
     return (
         <div>
             <NavLink to="/addworkout"><button>Create A Workout</button></NavLink>

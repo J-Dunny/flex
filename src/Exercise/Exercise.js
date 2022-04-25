@@ -26,14 +26,12 @@ class Exercise extends Component {
             reps: '',
             weight: '',
         })
-
-
     }
 
     render() {
         const doWorkoutPage = `http://localhost:3000/doworkout/${this.props.id}`
         // `https://flex-react-app.herokuapp.com/doworkout/${this.props.id}`
-        
+
         let allSets;
         if (this.state.sets[0]) {
             allSets = this.state.sets.map((set, i) => {
@@ -77,9 +75,6 @@ class Exercise extends Component {
             </section>
         )
     }
-
-
-
 }
 
 export default Exercise

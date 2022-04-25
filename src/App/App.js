@@ -55,18 +55,16 @@ class App extends Component {
   }
 
   render() {
-    
+
     if (this.state.errorMsg) {
       return (
         <Route exact path="*" render={() => {
           return (
             <Error error={this.state.errorMsg} />
           )
-        }
-        } />
+        }} />
       )
     }
-
 
     return (
       <main className="App">
@@ -79,8 +77,7 @@ class App extends Component {
                 <AllWorkouts randomWorkout={this.randomWorkout} workouts={this.state.workouts} deleteWorkout={this.deleteWorkout} />
               </React.Fragment>
             )
-          }
-          } />
+          }} />
           <Route exact path="/addworkout" render={() => {
             return (
               <React.Fragment>
@@ -91,8 +88,7 @@ class App extends Component {
                 />
               </React.Fragment>
             )
-          }
-          } />
+          }} />
           <Route exact path="/doworkout/:id" render={({ match }) => {
             return (
               <React.Fragment>
@@ -102,8 +98,7 @@ class App extends Component {
                 />
               </React.Fragment>
             )
-          }
-          } />
+          }} />
           <Route path="*" render={() => {
             return (
               <React.Fragment>
@@ -111,17 +106,11 @@ class App extends Component {
                 <NoMatch />
               </React.Fragment>
             )
-          }
-          } />
-
-
-
-
+          }} />
         </Switch>
       </main >
     );
   }
-
 }
 
 export default App;

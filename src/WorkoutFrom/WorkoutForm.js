@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import ExerciseForm from '../ExerciseForm/ExerciseForm'
 import Exercise from '../Exercise/Exercise'
 import './WorkoutForm.css'
-import { Redirect } from 'react-router-dom'
 
 class WorkoutForm extends Component {
     constructor(props) {
@@ -11,7 +10,7 @@ class WorkoutForm extends Component {
         this.state = {
             title: '',
             exercises: [],
-            added:""
+            added: ""
         }
     }
 
@@ -30,7 +29,7 @@ class WorkoutForm extends Component {
             ...this.state
         }
         this.props.addWorkout(newWorkout)
-        this.setState({added:"Your workout was added!!"})
+        this.setState({ added: "Your workout was added!!" })
         setTimeout(() => this.clearInputs(), 3000)
     }
 
@@ -43,8 +42,9 @@ class WorkoutForm extends Component {
     }
 
     render() {
-        
+
         let allExercises;
+
         if (this.state.exercises[0]) {
             allExercises = this.state.exercises.map(exercise => {
                 return <Exercise key={exercise.id} exercise={exercise} />
@@ -55,7 +55,7 @@ class WorkoutForm extends Component {
             <section className='workout-form' >
                 <NavLink to='/home'><button>View Your Workouts</button></NavLink>
                 {this.state.added ? <h1 className='added'>{this.state.added}</h1> : <h1>Create a new Workout!</h1>}
-                {this.state.added ? "" :<section className='exercises-workout-form'>
+                {this.state.added ? "" : <section className='exercises-workout-form'>
                     {allExercises}
                 </section>}
                 <form onSubmit={(e) => this.submitNewWorkout(e)}>
@@ -68,7 +68,7 @@ class WorkoutForm extends Component {
                             required
                         />
                         : ""}
-                    {this.state.title ? <button>Add Workout</button>: ''}
+                    {this.state.title ? <button>Add Workout</button> : ''}
                 </form>
                 <p>Begin by Adding Exercises below</p>
                 <ExerciseForm addedExercises={this.state.exercises} newExercises={this.props.newExercises} addExercise={this.addExercise} />
