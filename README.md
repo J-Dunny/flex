@@ -13,12 +13,15 @@ If you would like to run the application locally you would need to:
 
 ## Features
 Generate Random Workout
+
 ![](https://media.giphy.com/media/AcF7f78HyE4oVwxEM2/giphy.gif)
 
 Create Custom Workout
+
 ![](https://media.giphy.com/media/LK6SmVHELHT1fXHVWa/giphy.gif)
 
 Document Weight and Repetitions
+
 ![](https://media.giphy.com/media/B7Vcy1hRktHpoX0Dxa/giphy.gif)
 
 ## Technologies
