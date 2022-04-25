@@ -22,6 +22,7 @@ class ExerciseForm extends Component {
     render() {
         let targets = []
         let categories;
+
         if (this.props.newExercises[0]) {
             this.props.newExercises.forEach(exercise => {
                 if (!targets.includes(exercise.target)) {
@@ -40,7 +41,7 @@ class ExerciseForm extends Component {
 
             allOptions = options.map(exercise => {
                 let check = ""
-                if(this.props.addedExercises.includes(exercise)){
+                if (this.props.addedExercises.includes(exercise)) {
                     check = "✅"
                 }
                 return (
@@ -63,7 +64,7 @@ class ExerciseForm extends Component {
                     onChange={e => this.changeHandler(e)}>
                     <option
                         value=''
-                        disabled >Choose Category</option>
+                    >Choose Category</option>
                     {categories}
                 </select>
                 <section
