@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Run Cypress"
-          command: 
+          command: |
           echo Running Tests
           npm start & wait-on http://localhost:3000
 
