@@ -13,9 +13,9 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "my-server -p 3030",
+        "start": "my-server -p 3000",
         "cy:run": "cypress run",
-        "test": "start-server-and-test start http://localhost:3030 cy:run",
+        "test": "start-server-and-test start http://localhost:3000 cy:run",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
