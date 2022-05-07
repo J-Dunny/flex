@@ -16,7 +16,9 @@ jobs:
       - checkout
       - run:
           name: "Run Cypress"
-          command: "npm start & wait-on http://localhost:3000"
+          command: 
+          echo Running Tests
+          npm start & wait-on http://localhost:3000
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
